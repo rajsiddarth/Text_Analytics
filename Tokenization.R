@@ -32,7 +32,7 @@ word_count=word_frequency %>% count(word,sort = T)
 
 word_count=word_frequency%>%anti_join(data_frame('word'="chi"))%>%count(word,sort=T)
 
-#.................Functions.............................#
+#.................Implementing tokenization using Functions.............................#
 # to prep file names
 #Dataset is the name of csv file containing
 rm(list=ls(all=T))
