@@ -10,6 +10,7 @@ output:
     fig_height: 4.5
     theme: cosmo
     highlight: tango
+    keep_md:true
  
 ---
 #Introduction
