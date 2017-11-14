@@ -1,5 +1,4 @@
-# Text Analytics
-Contains algorithms for Text analytics. 
+# Text Analytics 
 
 ## Project 1
 Each .cha file in the repository shows the interviews conducted with children whose first language is not English.Each children has different age of exposure to English.The details are mentioned in the guide_to_files.csv.This data set is obtained from kaggle.The challenge is to identify the most frequent words used by the children with different age and exposure to english.
