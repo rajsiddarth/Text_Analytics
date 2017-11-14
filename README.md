@@ -9,5 +9,5 @@ More information on the data set can be found at https://www.kaggle.com/rtatman/
 ## Project 2 
 This project is based on the data set downloaded from https://www.kaggle.com/c/msk-redefining-cancer-treatment
 The RMarkdown report gives detailed explainations of the approach followed.
-Various techniques for text analytics such as stop word removal, lemmetization, tokenization into bi-grams are implemented
+Various techniques for text analytics such as stop word removal,tf-idf analysis, lemmetization, tokenization into bi-grams are implemented
 
