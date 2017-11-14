@@ -226,7 +226,7 @@ Depicting frequent words as word cloud.
 library(wordcloud)
 t1 %>% count(stem) %>%with(wordcloud(stem,n, max.words = 100))
 ```
-##TF-IDF analysis
+## TF-IDF analysis
 Calculating Term frequency and IDF for words based on classes.Term frequency will be the number of times the word appeared in a particular class. Document frequency is the number of times the word appeared in all the classes.We use *bind_tf_idf* from tidytext to extract TF_IDF.
 
 ```{r, warning = FALSE}
