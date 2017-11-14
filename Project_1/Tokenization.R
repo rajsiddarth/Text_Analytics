@@ -3,7 +3,7 @@ rm(list=ls(all=T))
 #Reading data directory
 library(RCurl)
 
-link="https://raw.githubusercontent.com/rajsiddarth/Text_Analytics/master/Children_Speech/"
+link="https://raw.githubusercontent.com/rajsiddarth/Text_Analytics/master/Project_1/Children_Speech/"
 library(tibble)
 file_info=as_data_frame(read.table(text=getURL(paste0(link,"guide_to_files.csv")),header=T,sep=","))
 file_info$file_name[1]
