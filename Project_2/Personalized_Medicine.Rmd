@@ -13,16 +13,18 @@ output:
     keep_md:true
  
 ---
-#Introduction
-The code written is used to learn the basics about text classification libraries such as tidyr,tidytext,tidyverse,SnowballC,tibble and also visualization libraries such as ggplot, wordcloud.The code is for learning purposes and is loosely based on the kernal submitted in Kaggle by [heads or tails](https://www.kaggle.com/headsortails/personalised-medicine-eda-with-tidy-r) for a competition described below.The kernel is selected because the text information holds the key to the classification problem and will have to be understood/modelled well.
-We need to develop algorithms to classify genetic mutations into nine different classes based on clinical evidence (text).The data is from the kaggle challenge [Personalized Medicine: Redefining Cancer Treatment](https://www.kaggle.com/c/msk-redefining-cancer-treatment).
+# Introduction   
+
+The code written is used to learn the basics about text classification libraries such as tidyr,tidytext,tidyverse,SnowballC,tibble and also visualization libraries such as ggplot, wordcloud.The code is for learning purposes and is loosely based on the kernal submitted in Kaggle by [heads or tails](https://www.kaggle.com/headsortails/personalised-medicine-eda-with-tidy-r) for a competition described below.The kernel is selected because the text information holds the key to the classification problem and will have to be understood/modelled well.  
+
+We need to develop algorithms to classify genetic mutations into nine different classes based on clinical evidence (text).The data is from the kaggle challenge [Personalized Medicine: Redefining Cancer Treatment](https://www.kaggle.com/c/msk-redefining-cancer-treatment).  
   The [data](https://www.kaggle.com/c/msk-redefining-cancer-treatment/data) in two csv files and two text files:
 
 - *training/test variants* 
 
 - *training/test text* 
 
-##Reading data
+## Reading data
 Reading train and test variants data in csv files using library **readr**.
 
 
@@ -144,7 +146,7 @@ train%>%ggplot(aes(x=Class))+geom_bar(color="red")
 
 - Level 7 is  the most frequent one
 
-#Text feature Engineering
+# Text feature Engineering
 
 Taking *train_txt* and *test_txt* read using tidytext library and calulating the length of text.Using *str_length*from *stringr*.
 ```{r}
@@ -174,7 +176,7 @@ full_join(temp1,temp2, by = "ID") %>% ggplot(aes(txt_length)) +
   facet_wrap(~ Class)
 
 ```
-##Tokenizing using tidytext 
+## Tokenizing using tidytext 
 The *unnest_tokens* function from *tidytext* library not only tokenizes the senteces but also  gets rid of punctuation and converts everything to lowercase.
 
 ```{r}
@@ -182,7 +184,7 @@ library(tidytext)
 t1=train_txt %>% select(ID, txt) %>% unnest_tokens(word,txt)
 head(t1)
 ```
-##Stop word removal
+## Stop word removal
 
 The *tidytext* package contains a dictionary of *stop words* to help us remove stopwords from tidy text data. We will also define our own selection of stop words based on the typical structuring language of scientific papers. We also remove tokens that are only numbers or symbols.
 
@@ -207,7 +209,7 @@ t1%>%group_by(word)%>%summarise(ct=n())%>%filter(ct>50000)%>%top_n(10)%>%
   ggplot(aes(reorder(word,-ct,FUN=median),y=ct))+geom_bar(stat="identity",color="red")+labs(x="word",y="count")+coord_flip()
 ```
 
-##Word Stemming
+## Word Stemming
 As we can see from Fig 9, although the words mutation and mutations are variants of each other,they are shown to be different.Hence we perform word stemming and reduce them to their basic meaning.We will use the *"SnowballC"* package and its *"wordStem"* tool:
 
 ```{r split=FALSE, fig.align = 'default', warning = FALSE, fig.cap ="Fig. 9", out.width="100%"}
@@ -252,7 +254,7 @@ tf_idf %>%
   coord_flip()
 
 ```
-##Tokenizing into n-grams
+## Tokenizing into n-grams
 Using *unnest_tokens* to split the sentence it bi-grams(pairs of words).Below code is not executed due to the limitations of my laptop's processing power.Remove # and execute.Select the chunk of code and press Ctrl+Shift+C to uncomment or comment.
 
 ###Tokenize into bi-grams
@@ -262,7 +264,7 @@ Using *unnest_tokens* to split the sentence it bi-grams(pairs of words).Below co
 # head(t2)
 ```
 
-###Removing stop words
+### Removing stop words
 ```{r}
 #bi_sep = t2 %>%
   #separate(bigram, c("word1", "word2"), sep = " ")
@@ -281,7 +283,7 @@ Using *unnest_tokens* to split the sentence it bi-grams(pairs of words).Below co
   #unite(bigram, word1, word2, sep = " ")
 ```
 
-###Estimating tf-idf:
+### Estimating tf-idf:
 
 ```{r}
 # foo =train %>%
